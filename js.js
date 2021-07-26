@@ -14,7 +14,7 @@ function importe(url){
 importe('/numero.js');
 
 function Export2Doc(){
-    var preHtml = "<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'><head><meta charset='utf-8'><title>Export HTML To Doc</title></head><body>";
+    var preHtml = "<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'><head><meta charset='utf-8'><title>Export HTML To Doc</title><style> p{ font-size: 16px, align='justify'}</style></head><body>";
     var postHtml = "</body></html>";
     var html = preHtml+document.getElementById("exportContent").innerHTML+postHtml;
 
@@ -177,14 +177,13 @@ function llenarDatos(){
 	var fecha = document.getElementById("fecha").valueAsDate;
 	
 	var garanteCheck = document.getElementById("garanteCheck").checked;
-	if(propietarioCheck==true){
 	
+	if(propietarioCheck==true){	
 	document.getElementById("p_entre").innerHTML = "Entre los que suscriben la señora <strong>"+propietario+"</strong>, mayor de edad, dominicana, cedula de identidad y electoral <strong> No. "+propietarioCedula+
 	"</strong>, domiciliada y residente en "+propietarioDireccion +", quien para los fines del presente "+
 	"contrato se llamara <strong>LA PROPIETARIA</strong>, y de la otra parte,<strong> "+inquilino+"</strong>, dominicano/a, mayor de edad, "+
 	"cédula de identidad y electoral <strong>No."+inquilinoCedula+"</strong>, residente en "+inquilinoDireccion+
 	", quien en lo adelante se denominará <strong>EL/LA INQUILINO/A.</strong>";
-
 	}
 	else{
     document.getElementById("p_entre").innerHTML = "Entre los que suscriben el señor <strong>"+propietario+"</strong>, mayor de edad, dominicano, cedula de identidad y electoral <strong>No. "+propietarioCedula+
@@ -192,7 +191,6 @@ function llenarDatos(){
 	"contrato se llamara <strong>EL PROPIETARIO</strong>, y de la otra parte, "+inquilino+", dominicano/a, mayor de edad, "+
 	"cédula de identidad y electoral <strong>No."+inquilinoCedula+"</strong>, residente en "+inquilinoDireccion+
 	", quien en lo adelante se denominará<strong> EL/LA INQUILINO/A.</strong>";
-
 	}
 	
 	document.getElementById("p_primero").innerHTML = "<strong>PRIMERO: EL PROPIETARIO</strong> por el presente acto da en alquiler a <strong> EL/LA INQUILINA/O</strong> ,"+ 
@@ -220,31 +218,25 @@ function llenarDatos(){
 		document.getElementById("p_noveno").innerHTML ="<strong>NOVENO: EL/LA INQUILINA/O </strong> no podrá pretender en ningún momento mientras ocupe la "
 		+"casa, aplicar el depósito al pago de los alquileres vencidos."
 	}
-	document.getElementById("propietarioFirma").innerHTML = "    "+propietario+"    "
+	
+	document.getElementById("propietarioFirma").innerHTML = propietario
 	document.getElementById("inquilinoFirma").innerHTML = inquilino
 	document.getElementById("garanteFirma").innerHTML = garante
+	
 	try{
-			document.getElementById("p_hecho").innerHTML ="<strong>HECHO, REDACTADO Y FIRMADO,</strong> de Buena Fe, en dos originales de un mismo tenor y efecto, uno para cada "+
-	"una de las partes contratantes, en la ciudad de Santo Domingo Norte, República Dominicana, a los " + numeroALetras(fecha.getDate()+1)+" ("+(fecha.getDate()+1)+") dias del mes de "+
-	numerosAMeses(fecha.getMonth()+1) + " del año " + numeroALetras(fecha.getFullYear()) +" ("+fecha.getFullYear()+")."
-	
-	document.getElementById("p_notario").innerHTML ="Yo, Dra. MILAGROS JIMENEZ A., abogada Notaria Publica de los del número del DISTRITO NACIONAL, matricula: 2649, " +
-	"CERTIFICO Y DOY FE: que las firmas que parecen en el presente contrato fueron puestas en mi presencia, libre y voluntariamente por los señores"+
-	" descritos anteriormente, de generales que constan, y quienes me han declaro bajo juramento que estas son las mismas me acostumbran a "+
-	"usar en todos sus actos públicos y privados, dado en la ciudad de Santo Domingo Este, "+
-	"capital de la República Dominicana, a los " + numeroALetras(fecha.getDate()+1)+" ("+(fecha.getDate()+1)+") dias del mes de "+
-	numerosAMeses(fecha.getMonth()+1) + " del año " + numeroALetras(fecha.getFullYear()) +" ("+fecha.getFullYear()+")."
+		document.getElementById("p_hecho").innerHTML ="<strong>HECHO, REDACTADO Y FIRMADO,</strong> de Buena Fe, en dos originales de un mismo tenor y efecto, uno para cada "+
+		"una de las partes contratantes, en la ciudad de Santo Domingo Norte, República Dominicana, a los " + numeroALetras(fecha.getDate()+1)+" ("+(fecha.getDate()+1)+") dias del mes de "+
+		numerosAMeses(fecha.getMonth()+1) + " del año " + numeroALetras(fecha.getFullYear()) +" ("+fecha.getFullYear()+")."
+		
+		document.getElementById("p_notario").innerHTML ="Yo, Dra. MILAGROS JIMENEZ A., abogada Notaria Publica de los del número del DISTRITO NACIONAL, matricula: 2649, " +
+		"CERTIFICO Y DOY FE: que las firmas que parecen en el presente contrato fueron puestas en mi presencia, libre y voluntariamente por los señores"+
+		" descritos anteriormente, de generales que constan, y quienes me han declaro bajo juramento que estas son las mismas me acostumbran a "+
+		"usar en todos sus actos públicos y privados, dado en la ciudad de Santo Domingo Este, "+
+		"capital de la República Dominicana, a los " + numeroALetras(fecha.getDate()+1)+" ("+(fecha.getDate()+1)+") dias del mes de "+
+		numerosAMeses(fecha.getMonth()+1) + " del año " + numeroALetras(fecha.getFullYear()) +" ("+fecha.getFullYear()+")."
 	}catch{
-		console.log("Error")
+		console.log("Error de la fecha")
 	}
-	
-	
-	
-	
-	/*document.getElementById("p_hecho").innerHTML ="<strong>HECHO, REDACTADO Y FIRMADO,</strong> de Buena Fe, en dos originales de un mismo tenor y efecto, uno para cada "+
-	"una de las partes contratantes, en la ciudad de Santo Domingo Norte, República Dominicana, a los " + numeroALetras(fecha.getDate()+1)+" ("+(fecha.getDate()+1)+") dias del mes de "+
-	numerosAMeses(fecha.getMonth()+1) + " del año " + numeroALetras(fecha.getFullYear()) +" ("+fecha.getFullYear()+")."*/
-	
 	
 }
 
@@ -252,7 +244,6 @@ function llenarDatos(){
 $(document).ready(function(){
 	document.getElementById("garante_div").style.display = 'none';
 	$('html, body').animate({scrollTop:0}, 'slow');
-		//document.write("<script type='text/javascript' src='numero.js'></script>");
 	$("#formulario :input").change(function(){
     		llenarDatos();
 	});
